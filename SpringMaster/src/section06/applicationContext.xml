@@ -14,8 +14,24 @@
 	
 	<bean id="myCoach"
 		class="com.naissur.section06.impl.TrackCoach"
-		scope="prototype">
+		init-method="doMyStartupStuff"
+		destroy-method="doMyCleanupStuff">
+		
+		<!-- set up constructor injection -->
 		<constructor-arg ref="myFortuneService" />
+	</bean>
+	
+	<!-- coach bean with singleton scope -->
+	<bean id="myJavaCoachSingleton"
+		class="com.naissur.section06.impl.JavaCoach">
+		<constructor-arg ref="myFortuneService" />
+	</bean>
+	
+	<!-- coach bean with prototype scope -->
+	<bean id="myJavaCoachPrototype"
+		class="com.naissur.section06.impl.JavaCoach"
+		scope="prototype">
+		<constructor-arg ref="myFortuneService" />	
 	</bean>
 
 </beans>
