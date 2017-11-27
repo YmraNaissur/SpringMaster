@@ -24,11 +24,17 @@ public class BikeCoach implements Coach {
 	public String getDailyFortune() {
 		return fortuneService.getFortune();
 	}
-
-	// define a setter method for dependency injection
+	
+	// dependency injection with ANY method
 	@Autowired
-	public void setFortuneService(FortuneService fortuneService) {
+	public void doSomeCrazyStuff(FortuneService fortuneService) {
+		System.out.println(">> BikeCoach: inside doSomeCrazyStuff() method (it is actually not a setter!).");
+		this.fortuneService = fortuneService;
+	}
+
+	// define a setter method
+	/*public void setFortuneService(FortuneService fortuneService) {
 		this.fortuneService = fortuneService;
 		System.out.println(">> BikeCoach: inside setFortuneService() method.");
-	}
+	}*/
 }
