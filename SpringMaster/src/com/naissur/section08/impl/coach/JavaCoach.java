@@ -1,27 +1,31 @@
-package com.naissur.section08.impl;
+package com.naissur.section08.impl.coach;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import com.naissur.section08.interfaces.Coach;
 import com.naissur.section08.interfaces.FortuneService;
 
 @Component
-public class TennisCoach implements Coach {
+public class JavaCoach implements Coach {
+
+	@Autowired
+	@Qualifier("happyFortuneService")
 	private FortuneService fortuneService;
 	
-	@Autowired
-	public TennisCoach(FortuneService fortuneSevice) {
-		this.fortuneService = fortuneSevice;
+	public JavaCoach() {
+		System.out.println(">> JavaCoach: inside default constructor.");
 	}
-
+	
 	@Override
 	public String getDailyWorkout() {
-		return "Practice your backhand volley.";
+		return "Practice some Spring today.";
 	}
 
 	@Override
 	public String getDailyFortune() {
 		return fortuneService.getFortune();
 	}
+
 }
