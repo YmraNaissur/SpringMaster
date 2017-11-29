@@ -11,7 +11,7 @@ import com.naissur.section08.interfaces.FortuneService;
 public class JavaCoach implements Coach {
 
 	@Autowired
-	@Qualifier("happyFortuneService")
+	@Qualifier("fileFortuneService")
 	private FortuneService fortuneService;
 	
 	public JavaCoach() {
