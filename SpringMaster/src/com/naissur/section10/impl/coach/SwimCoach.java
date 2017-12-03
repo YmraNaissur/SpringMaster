@@ -1,10 +1,18 @@
 package com.naissur.section10.impl.coach;
 
+import org.springframework.beans.factory.annotation.Value;
+
 import com.naissur.section10.interfaces.Coach;
 import com.naissur.section10.interfaces.FortuneService;
 
 public class SwimCoach implements Coach {
 	private FortuneService fortuneService;
+	
+	@Value("${foo.email}")
+	private String email;
+	
+	@Value("${foo.team}")
+	private String team;
 	
 	// default constructor
 	public SwimCoach() {
@@ -25,5 +33,14 @@ public class SwimCoach implements Coach {
 	@Override
 	public String getDailyFortune() {
 		return fortuneService.getFortune();
+	}
+
+	// getters for private properties
+	public String getEmail() {
+		return email;
+	}
+
+	public String getTeam() {
+		return team;
 	}
 }
